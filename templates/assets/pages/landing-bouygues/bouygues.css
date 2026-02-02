@@ -1,0 +1,2027 @@
+@charset "UTF-8";
+/*******************************************************************************
+
+-- SASS : feuille screen --
+
+Author      :   CCM Benchmark / Front end team
+
+Description :   Feuille principal de gestion des styles
+
+*******************************************************************************/
+/*******************************************************************************
+
+-- _mixins --
+
+Author      :   CCM Benchmark / Front end team
+
+Description :   Cette feuille contient tous les mixins necessaires au bon
+                fonctionnement du framework.                
+
+Docs        :   http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#mixins
+
+Alias       :   "/assets/"          /var/www/_branches/ccmcms/application/assets/
+                "/fonts/" /var/www/_branches/ccmcms/application/assets/fonts/
+                "/img/"   /var/www/_branches/ccmcms/application/assets/img/
+
+*******************************************************************************/
+/* si on ne veut pas appliquer le responsive a 768px par defaut sur les grid on peut utiliser ce mixin sur une class qui contient aussi .grid--norwd */
+/*******************************************************************************
+
+-- _extends --
+
+Author      :   CCM Benchmark / Front end team
+
+Description :   Cette feuille contient tous les extends necessaire au bon
+                fonctionnement du framework.
+
+Docs        :   http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#extend
+
+Alias       :   "/assets/"          /var/www/_branches/ccmcms/application/assets/
+                "/fonts/" /var/www/_branches/ccmcms/application/assets/fonts/
+                "/img/"   /var/www/_branches/ccmcms/application/assets/img/
+
+*******************************************************************************/
+/* new clearfix 
+-- http://css-tricks.com/snippets/css/clear-fix/ */
+.clearfix:after,
+.entry:after,
+.grid_line:after,
+.layout:after,
+.layout_ct:after,
+.app--rwd .layout.layout--offcanvas .layout_ct .layout_ct__1:after,
+.app--rwd .layout.layout--offcanvas .layout_ct .layout_ct__2:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* >=IE9 : permet de specifier un bg sur le bloc qui debute au padding */
+.grid_line .grid_left,
+.grid_line .grid_right,
+.grid_line .grid_last,
+.grid_row .grid_col,
+.layout,
+.layout_left,
+.layout_main,
+.layout_right {
+  -moz-background-clip: padding-box !important;
+  -webkit-background-clip: padding-box !important;
+  background-clip: padding-box !important;
+}
+
+/* espacement entre les blocs */
+.mod,
+article,
+aside,
+section {
+  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
+  /* on divise de moitié l'espacement quand on est sur mobile */
+}
+@media (max-width: 768px) {
+  .mod,
+  article,
+  aside,
+  section {
+    margin-bottom: 10px;
+    margin-bottom: 0.625rem;
+  }
+}
+
+/* animation par defaut */
+/* gradient gris champs de formulaire */
+/*
+-- HELPERS 
+-- A n'utiliser quand dernier recours. Si il y'a une .class sur l'element a skinner
+-- privileger la surcharge de cette .class
+------------------------------------------------------------------------------*/
+.ccmcss_align_l {
+  text-align: left;
+}
+
+.ccmcss_align_c {
+  text-align: center;
+}
+
+.ccmcss_align_r {
+  text-align: right;
+}
+
+.ccmcss_align_j {
+  text-align: justify;
+}
+
+.ccmcss_valign_t {
+  vertical-align: top;
+}
+
+.ccmcss_valign_m {
+  vertical-align: middle;
+}
+
+.ccmcss_valign_b {
+  vertical-align: bottom;
+}
+
+.ccmcss_ft_xs {
+  font-size: 0.75em;
+}
+
+.ccmcss_ft_s {
+  font-size: 0.85em;
+}
+
+.ccmcss_ft_l {
+  font-size: 1.15em;
+}
+
+.ccmcss_ft_xl {
+  font-size: 1.25em;
+}
+
+.ccmcss_ft_bold {
+  font-weight: bold;
+}
+
+.ccmcss_hidden {
+  visibility: hidden;
+}
+
+.ccmcss_helvetica {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.ccmcss_georgia {
+  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+.ccmcss_tahoma {
+  font-family: "Lucida Grande", Tahoma, Verdana, Arial, sans-serif;
+}
+
+.ccmcss_courier {
+  font-family: "Bitstream Vera Sans Mono", Consolas, Courier, monospace;
+}
+
+.ccmcss_verdana {
+  font-family: Verdana, Geneva, sans-serif;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+/*! normalize.css v3.0.1 | MIT License | git.io/normalize */
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS text size adjust after orientation change, without disabling
+ *    user zoom.
+ */
+html {
+  font-family: sans-serif;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+}
+
+/**
+ * Remove default margin.
+ */
+body {
+  margin: 0;
+}
+
+/* HTML5 display definitions
+========================================================================== */
+/**
+ * Correct `block` display not defined for any HTML5 element in IE 8/9.
+ * Correct `block` display not defined for `details` or `summary` in IE 10/11 and Firefox.
+ * Correct `block` display not defined for `main` in IE 11.
+ */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+  display: block;
+}
+
+/**
+ * 1. Correct `inline-block` display not defined in IE 8/9.
+ * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+ */
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  /* 1 */
+  vertical-align: baseline;
+  /* 2 */
+}
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/**
+ * Address `[hidden]` styling not present in IE 8/9/10.
+ * Hide the `template` element in IE 8/9/11, Safari, and Firefox < 22.
+ */
+[hidden],
+template {
+  display: none;
+}
+
+/* Links
+========================================================================== */
+/**
+ * Remove the gray background color from active links in IE 10.
+ */
+a {
+  background: transparent;
+}
+
+/**
+ * Improve readability when focused and also mouse hovered in all browsers.
+ */
+a:active,
+a:hover {
+  outline: 0;
+}
+
+/* Text-level semantics
+========================================================================== */
+/**
+ * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
+ */
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
+ */
+b,
+strong {
+  font-weight: bold;
+}
+
+/**
+ * Address styling not present in Safari and Chrome.
+ */
+dfn {
+  font-style: italic;
+}
+
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari, and Chrome.
+ 
+
+h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+}
+ */
+/**
+ * Address styling not present in IE 8/9.
+ */
+mark {
+  background: #ff0;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+/* Embedded content
+========================================================================== */
+/**
+ * Remove border when inside `a` element in IE 8/9/10.
+ * Improve image quality when scaled in IE7: h5bp.com/d
+ * https://developer.mozilla.org/fr/docs/CSS/Image-rendering
+ */
+img {
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+  image-rendering: optimizequality;
+  vertical-align: top;
+}
+
+/**
+ * Correct overflow not hidden in IE 9/10/11.
+ */
+svg:not(:root) {
+  overflow: hidden;
+}
+
+dl,
+dt,
+dd,
+ol,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+/* Grouping content
+========================================================================== */
+/**
+ * Address margin not present in IE 8/9 and Safari.
+ */
+figure {
+  margin: 0;
+}
+
+/**
+ * Address differences between Firefox and other browsers.
+ */
+hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+/**
+ * Contain overflow in all browsers.
+ 
+
+pre {
+    overflow: auto;
+} */
+/**
+ * Address odd `em`-unit font size rendering in all browsers.
+ 
+
+code,
+kbd,
+pre,
+samp {
+    font-family: monospace, monospace;
+    font-size: 1em;
+} */
+/* Forms
+========================================================================== */
+/**
+ * Known limitation: by default, Chrome and Safari on OS X allow very limited
+ * styling of `select`, unless a `border` property is set.
+ */
+/**
+ * 1. Correct color not being inherited.
+ *    Known issue: affects color of disabled elements.
+ * 2. Correct font properties not being inherited.
+ * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  /* 1 */
+  font-size: 100%;
+  /* 2 */
+  margin: 0;
+  /* 3 */
+}
+
+/**
+ * Address `overflow` set to `hidden` in IE 8/9/10/11.
+ */
+button {
+  overflow: visible;
+}
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
+ * Correct `select` style inheritance in Firefox.
+ */
+button,
+select {
+  text-transform: none;
+}
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ */
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  /* 2 */
+  cursor: pointer;
+  /* 3 */
+}
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+input {
+  line-height: normal;
+}
+
+/**
+ * It's recommended that you don't attempt to style these elements.
+ * Firefox's implementation doesn't respect box-sizing, padding, or width.
+ *
+ * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 2. Remove excess padding in IE 8/9/10.
+ */
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/**
+ * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`, it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari and Chrome
+ *    (include `-moz` to future-proof).
+ */
+input[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+}
+
+/**
+ * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+ * Safari (but not Chrome) clips the cancel button when the search input has
+ * padding (and `textfield` appearance).
+ */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * Define consistent border, margin, and padding.
+ */
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/**
+ * 1. Correct `color` not being inherited in IE 8/9/10/11.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+legend {
+  border: 0;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/** 
+ * Indicate that 'label' will shift focus to the associated form element 
+ */
+label {
+  cursor: pointer;
+}
+
+/**
+ * Remove default vertical scrollbar in IE 8/9/10/11.
+ */
+textarea {
+  overflow: auto;
+  vertical-align: top;
+  resize: vertical;
+}
+
+/**
+ * Don't inherit the `font-weight` (applied by a rule above).
+ * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ */
+optgroup {
+  font-weight: bold;
+}
+
+/* Tables
+========================================================================== */
+/**
+ * Remove most spacing between table cells.
+ */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td,
+th {
+  vertical-align: top;
+}
+
+/*******************************************************************************
+
+-- _typography --
+
+Author      :   CCM Benchmark / Front end team
+
+Description :   Cette feuille contient tous les styles editoriaux generique du 
+                framework.
+
+Inspired    :   http://lamb.cc/typograph/                   
+                http://www.smashingmagazine.com/2009/08/20/typographic-design-survey-best-practices-from-the-best-blogs/
+
+Alias       :   "/assets/"          /var/www/_branches/ccmcms/application/assets/
+                "/fonts/" /var/www/_branches/ccmcms/application/assets/fonts/
+                "/img/"   /var/www/_branches/ccmcms/application/assets/img/
+
+*******************************************************************************/
+/* en % */
+/* en px */
+/*
+-- HEADINGS & EDITORIAL
+------------------------------------------------------------------------------*/
+body {
+  background-color: #E3E9F7;
+  color: #303030;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.8125em;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+}
+.entry--bold h1,
+.entry--bold h2,
+.entry--bold h3,
+.entry--bold h4,
+.entry--bold h5,
+.entry--bold h6 {
+  font-weight: bold;
+}
+
+h1,
+.h1_like {
+  font-size: 32px;
+  font-size: 2rem;
+  line-height: 1.2;
+}
+.entry h1,
+.entry .h1_like {
+  margin-top: 0.30469em;
+}
+.entry--marge h1,
+.entry--marge .h1_like {
+  margin: 0.60938em 0 0.30469em;
+}
+
+h2,
+.h2_like {
+  font-size: 28px;
+  font-size: 1.75rem;
+  line-height: 1.2;
+}
+.entry h2,
+.entry .h2_like {
+  margin-top: 0.34821em;
+}
+.entry--marge h2,
+.entry--marge .h2_like {
+  margin: 0.69643em 0 0.34821em;
+}
+
+h3,
+.h3_like {
+  font-size: 24px;
+  font-size: 1.5rem;
+  line-height: 1.3;
+}
+.entry h3,
+.entry .h3_like {
+  margin-top: 0.40625em;
+}
+.entry--marge h3,
+.entry--marge .h3_like {
+  margin: 0.8125em 0 0.40625em;
+}
+
+h4,
+.h4_like {
+  font-size: 22px;
+  font-size: 1.375rem;
+  line-height: 1.3;
+}
+.entry h4,
+.entry .h4_like {
+  margin-top: 0.44318em;
+}
+.entry--marge h4,
+.entry--marge .h4_like {
+  margin: 0.88636em 0 0.44318em;
+}
+
+h5,
+.h5_like {
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.entry h5,
+.entry .h5_like {
+  margin-top: 0.60938em;
+}
+.entry--marge h5,
+.entry--marge .h5_like {
+  margin: 1.21875em 0 0.60938em;
+}
+
+h6,
+.h6_like {
+  font-size: 14px;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+.entry h6,
+.entry .h6_like {
+  margin-top: 0.69643em;
+}
+.entry--marge h6,
+.entry--marge .h6_like {
+  margin: 1.39286em 0 0.69643em;
+}
+
+/* 
+    mode article : tout ce qui est enfant de la class .entry 
+*/
+.entry a {
+  text-decoration: underline;
+}
+
+.entry a:hover {
+  text-decoration: none;
+}
+
+.entry a[name] {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* ancre HTML */
+.entry ul,
+.entry ol {
+  margin: 0.75em 0;
+  padding: 0 0 0 1.5em;
+}
+
+.entry ul li,
+.entry ol li {
+  margin-top: 0.46154em 0;
+  margin-bottom: 0.46154em 0;
+  /* ne pas ecrire margin: 6px 0; car conflit */
+}
+
+.entry ol {
+  list-style-type: decimal;
+}
+
+.entry ul {
+  list-style-type: disc;
+}
+.entry ul ul {
+  list-style-type: circle;
+}
+.entry ul ul ul {
+  list-style-type: square;
+}
+
+.entry embed,
+.entry audio,
+.entry video,
+.entry object,
+.entry iframe {
+  margin: 0 auto;
+}
+
+/*
+futur : http://caniuse.com/#feat=css-counters
+article ol {
+  counter-reset: section;                
+  list-style-type: none;
+}
+    article ol li:before {
+      counter-increment: section;            
+      content: counters(section, ".") " ";   
+    }*/
+.entry p,
+.entry .p,
+.p_like {
+  margin-bottom: 0.75em;
+}
+
+.entry p > img {
+  margin: 0.75em auto;
+}
+.entry p > img[style*="float:left"] {
+  margin-left: 0;
+}
+.entry p > img[style*="float:right"] {
+  margin-right: 0;
+}
+
+/*
+-- SKIN FOR BASIC FIGURE 
+------------------------------------------------------------------------------*/
+.entry figure,
+.ccmcss_cms_figure {
+  font-size: 13px;
+  font-size: 0.8125rem;
+  display: table;
+  position: relative;
+  margin: 1.5em auto;
+}
+.entry figure.ccmcss_cms_figure--left,
+.entry figure[style*="float:left"],
+.ccmcss_cms_figure.ccmcss_cms_figure--left,
+.ccmcss_cms_figure[style*="float:left"] {
+  float: left;
+  margin-right: 1.5em;
+}
+.entry figure.ccmcss_cms_figure--right,
+.entry figure[style*="float:right"],
+.ccmcss_cms_figure.ccmcss_cms_figure--right,
+.ccmcss_cms_figure[style*="float:right"] {
+  float: right;
+  margin-left: 1.5em;
+}
+.entry figure img,
+.ccmcss_cms_figure img {
+  margin: 0;
+  width: 100%;
+  height: auto;
+  border: 0;
+  padding: 0;
+}
+.lt-ie9 .entry figure img,
+.lt-ie9
+.ccmcss_cms_figure img {
+  width: auto;
+}
+.entry figure figcaption,
+.ccmcss_cms_figure figcaption {
+  display: table-caption;
+  caption-side: bottom;
+  padding: 10px;
+  color: #fff;
+  text-align: left;
+  background-color: #000;
+}
+.entry figure figcaption a,
+.ccmcss_cms_figure figcaption a {
+  color: #fff;
+  text-decoration: underline;
+}
+.entry figure figcaption a:hover,
+.ccmcss_cms_figure figcaption a:hover {
+  text-decoration: none;
+}
+.entry figure figcaption small,
+.ccmcss_cms_figure figcaption small {
+  font-size: 0.92308em;
+  color: #9e9e9e;
+}
+.entry figure figcaption small a,
+.ccmcss_cms_figure figcaption small a {
+  color: #9e9e9e;
+}
+.entry figure .icon_play,
+.ccmcss_cms_figure .icon_play {
+  display: block;
+}
+.entry figure .app_btn--ico,
+.entry figure .app_btn--ico:active,
+.ccmcss_cms_figure .app_btn--ico,
+.ccmcss_cms_figure .app_btn--ico:active {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+.entry figure .app_btn--ico:hover,
+.ccmcss_cms_figure .app_btn--ico:hover {
+  cursor: pointer;
+}
+
+/*
+-- SKIN FOR BASIC TABLE
+------------------------------------------------------------------------------*/
+.ccmcss_table.ccmcss_table--fixed table {
+  table-layout: fixed;
+}
+
+.entry table,
+.app_box_see_more table,
+.ccmcss_table {
+  overflow: auto;
+  /* permet de mettre une scroll bar horizontal pour les contenus qui débordent */
+}
+
+.entry table,
+.app_box_see_more table,
+.ccmcss_table table {
+  font-size: 14px;
+  font-size: 0.875rem;
+  width: 100%;
+  margin: 1.39286em auto;
+  clear: both;
+  /* corrige un bug sous Chrome */
+}
+.entry table tr:nth-child(2n) > td,
+.app_box_see_more table tr:nth-child(2n) > td,
+.ccmcss_table table tr:nth-child(2n) > td {
+  background-color: #f6f6f6;
+}
+.entry table th img,
+.app_box_see_more table th img,
+.ccmcss_table table th img {
+  max-width: none;
+  margin: 5px auto;
+}
+.entry table td img,
+.app_box_see_more table td img,
+.ccmcss_table table td img {
+  max-width: none;
+}
+.entry table thead th,
+.app_box_see_more table thead th,
+.ccmcss_table table thead th {
+  font-weight: normal;
+}
+.entry table caption,
+.app_box_see_more table caption,
+.ccmcss_table table caption {
+  text-transform: uppercase;
+}
+.entry table caption,
+.entry table thead th,
+.app_box_see_more table caption,
+.app_box_see_more table thead th,
+.ccmcss_table table caption,
+.ccmcss_table table thead th {
+  padding: 5px 10px;
+  color: #fff;
+  text-align: left;
+  background: #666;
+  border: 1px solid #48494a;
+}
+.entry table caption a,
+.entry table thead th a,
+.app_box_see_more table caption a,
+.app_box_see_more table thead th a,
+.ccmcss_table table caption a,
+.ccmcss_table table thead th a {
+  color: #fff;
+}
+.entry table caption,
+.app_box_see_more table caption,
+.ccmcss_table table caption {
+  font-weight: bold;
+  border-bottom: none;
+}
+.entry table tfoot td,
+.entry table tfoot th,
+.app_box_see_more table tfoot td,
+.app_box_see_more table tfoot th,
+.ccmcss_table table tfoot td,
+.ccmcss_table table tfoot th {
+  padding: 3px 6px;
+  color: #666;
+  font-size: 0.85714em;
+  border: 1px solid #ccc;
+}
+.entry table tbody th,
+.app_box_see_more table tbody th,
+.ccmcss_table table tbody th {
+  font-weight: normal;
+  padding: 5px 10px;
+  background-color: #ebebeb;
+  border: 1px solid #ccc;
+}
+.entry table thead td,
+.entry table tbody td,
+.app_box_see_more table thead td,
+.app_box_see_more table tbody td,
+.ccmcss_table table thead td,
+.ccmcss_table table tbody td {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+}
+.entry table[align*="left"],
+.app_box_see_more table[align*="left"],
+.ccmcss_table table[align*="left"] {
+  margin-right: 1.39286em;
+}
+.entry table[align*="right"],
+.app_box_see_more table[align*="right"],
+.ccmcss_table table[align*="right"] {
+  margin-left: 1.39286em;
+}
+
+/*
+-- SKIN FOR BASIC BLOCKQUOTE 
+------------------------------------------------------------------------------*/
+.entry blockquote {
+  font-size: 24px;
+  font-size: 1.5rem;
+  margin: 9.75px 24px/13pxem;
+  color: #666;
+  text-align: center;
+  font-style: italic;
+}
+.entry blockquote.ccmcss_cms_exergue--left,
+.entry blockquote.ccmcss_cms_exergue--right,
+.entry blockquote[style*="float:left"],
+.entry blockquote[style*="float:right"] {
+  max-width: 40%;
+}
+.entry blockquote.ccmcss_cms_exergue--left {
+  float: left;
+  text-align: left;
+}
+.entry blockquote.ccmcss_cms_exergue--right {
+  float: right;
+  text-align: right;
+}
+
+/*
+-- LINKS
+------------------------------------------------------------------------------*/
+a {
+  color: #303030;
+  text-decoration: none;
+}
+
+a:hover,
+.a_hover {
+  color: #d6071b;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+a.fancy:hover {
+  cursor: -webkit-zoom-in;
+  cursor: -moz-zoom-in;
+  cursor: zoom-in;
+}
+
+.a_hover:hover {
+  text-decoration: none;
+}
+
+/*a:visited       { color: $a_color_visited }*/
+a:focus {
+  outline: thin dotted;
+}
+
+/*
+-- SKIN FOR BASIC HTML5 TAGS 
+------------------------------------------------------------------------------*/
+::-moz-selection {
+  background: #d6071b;
+  color: #fff;
+  text-shadow: none;
+}
+
+::selection {
+  background: #d6071b;
+  color: #fff;
+  text-shadow: none;
+}
+
+img,
+embed,
+audio,
+video,
+object,
+iframe {
+  display: block;
+  max-width: 100%;
+}
+
+blockquote {
+  margin: 0.75em;
+  font-style: italic;
+  color: #666;
+}
+
+ins {
+  background: #ff9;
+  color: #000;
+  text-decoration: none;
+}
+
+ins.adsbygoogle {
+  background: none;
+}
+
+/* Redeclare monospace font family: h5bp.com/j */
+pre,
+code,
+kbd,
+samp {
+  font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+  font-size: 0.85em;
+}
+
+/* https://github.com/twitter/bootstrap/blob/master/docs/assets/css/bootstrap.css */
+code {
+  padding: 1px 4px;
+  color: #d14;
+  white-space: nowrap;
+  background-color: #fcfcfc;
+  border: 1px solid #bbb;
+  border-radius: 3px;
+}
+
+pre {
+  margin: 0.75em 0;
+  overflow: auto;
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  word-break: break-all;
+  border: 1px solid #ccc;
+  padding: 2px;
+  background-color: #f5f5f5;
+}
+
+pre code {
+  padding: 0;
+  color: inherit;
+  white-space: pre;
+  white-space: pre-wrap;
+  background-color: transparent;
+  border: 0;
+}
+
+q {
+  quotes: none;
+}
+
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+/* Position subscript and superscript content without affecting line-height: h5bp.com/k */
+button,
+input,
+select,
+textarea {
+  font-family: "Open Sans", sans-serif;
+}
+
+input:focus {
+  color: #303030;
+  outline: none;
+}
+
+/* lists */
+ol,
+ul {
+  list-style-type: none;
+}
+
+/*
+-- <IE9 styles
+----------------------------------------------------------------------------- */
+.lt-ie9 input[type="password"] {
+  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+.ie9 input {
+  filter: none !important;
+}
+
+/*@import "_core/typecsset";*/
+/*******************************************************************************
+
+-- GRID --
+
+Author      :   CCM Benchmark / Front end team
+
+Inspired by :   http://gridpak.com/ 
+                https://github.com/stubbornella/oocss
+                http://www.knacss.com/
+                http://selectivizr.com/
+                https://github.com/Schepp/box-sizing-polyfill
+                
+
+Description :   Le systeme de grille vous permet de creer a votre convenance des 
+                mises en pages complexes de boites fluid. Ne pas confondre avec
+                le systeme de layout.
+
+Support     :   >=IE8 Full
+                <IE8 Buggy avec .last (voir bas de page)
+
+Alias       :   "/assets/"          /var/www/_branches/ccmcms/application/assets/
+                "/fonts/" /var/www/_branches/ccmcms/application/assets/fonts/
+                "/img/"   /var/www/_branches/ccmcms/application/assets/img/
+
+*******************************************************************************/
+/*
+-- DEFAULT CSS 
+------------------------------------------------------------------------------*/
+/* gouttiere entre les bloc de la grille */
+.grid_line.gutter {
+  margin-left: -20px;
+}
+
+.grid_line.gutter > [class^=grid_] {
+  border-left: 20px solid transparent;
+}
+
+.grid_row.gutter > * + * {
+  border-left: 20px solid transparent;
+}
+
+/* grille mode tableau (hauteur qui s'etire) */
+.grid_row {
+  display: table;
+  width: 100%;
+}
+.grid_row.fixed,
+.grid_row.grid_row--fixed {
+  table-layout: fixed;
+}
+.grid_row.grid_row--auto {
+  width: auto;
+}
+
+/* row */
+.grid_col {
+  display: table-cell;
+  vertical-align: top;
+}
+.grid_col.grid_col--middle {
+  vertical-align: middle;
+}
+.grid_col.grid_col--bottom {
+  vertical-align: bottom;
+}
+
+/* grille mode colonne (hauteur independante) */
+.grid_left,
+.left {
+  float: left;
+}
+
+.grid_right,
+.right {
+  float: right;
+}
+
+/*
+-- TAILLES DES CELLULES 
+------------------------------------------------------------------------------*/
+.w5 {
+  width: 5%;
+}
+
+.w10 {
+  width: 10%;
+}
+
+.w15 {
+  width: 15%;
+}
+
+.w16 {
+  width: 16.6667%;
+}
+
+.w20 {
+  width: 20%;
+}
+
+.w25 {
+  width: 25%;
+}
+
+.w30 {
+  width: 30%;
+}
+
+.w33 {
+  width: 33.3334%;
+}
+
+.w35 {
+  width: 35%;
+}
+
+.w40 {
+  width: 40%;
+}
+
+.w45 {
+  width: 45%;
+}
+
+.w50 {
+  width: 50%;
+}
+
+.w55 {
+  width: 55%;
+}
+
+.w60 {
+  width: 60%;
+}
+
+.w65 {
+  width: 65%;
+}
+
+.w66 {
+  width: 66.6667%;
+}
+
+.w70 {
+  width: 70%;
+}
+
+.w75 {
+  width: 75%;
+}
+
+.w80 {
+  width: 80%;
+}
+
+.w85 {
+  width: 85%;
+}
+
+.w90 {
+  width: 90%;
+}
+
+.w95 {
+  width: 95%;
+}
+
+.w100 {
+  width: 100%;
+}
+
+/*
+-- CLEARFIX 
+------------------------------------------------------------------------------*/
+/* derniere cellule fluide de la ligne*/
+.grid_last {
+  display: table-cell;
+  float: none;
+  width: auto;
+}
+
+/* cellule fluide qui prend le reste de la place disponible */
+.grid_last:after {
+  content: "x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x";
+  display: block;
+  height: 0;
+  overflow: hidden;
+  font-size: 100px;
+}
+
+/*
+-- RESPONSIVE
+------------------------------------------------------------------------------*/
+@media (max-width: 767px) {
+  /* systeme de grille repasse en bloc 100% */
+  .grid_row:not(.grid--norwd) {
+    display: block;
+  }
+
+  .grid_line:not(.grid--norwd) > .grid_left,
+  .grid_line:not(.grid--norwd) > .grid_right,
+  .grid_line:not(.grid--norwd) > .grid_col,
+  .grid_line:not(.grid--norwd) > .grid_last,
+  .grid_row:not(.grid--norwd) > .grid_left,
+  .grid_row:not(.grid--norwd) > .grid_right,
+  .grid_row:not(.grid--norwd) > .grid_col,
+  .grid_row:not(.grid--norwd) > .grid_last {
+    float: none;
+    width: 100%;
+    display: block;
+    border: none;
+  }
+  .grid_line:not(.grid--norwd).gutter,
+  .grid_row:not(.grid--norwd).gutter {
+    margin-left: 0;
+  }
+  .grid_line:not(.grid--norwd).gutter > .grid_left,
+  .grid_line:not(.grid--norwd).gutter > .grid_right,
+  .grid_line:not(.grid--norwd).gutter > .grid_col,
+  .grid_line:not(.grid--norwd).gutter > .grid_last,
+  .grid_row:not(.grid--norwd).gutter > .grid_left,
+  .grid_row:not(.grid--norwd).gutter > .grid_right,
+  .grid_row:not(.grid--norwd).gutter > .grid_col,
+  .grid_row:not(.grid--norwd).gutter > .grid_last {
+    margin-bottom: 10px;
+  }
+}
+/*******************************************************************************
+
+-- LAYOUT --
+
+Author      :   CCM Benchmark / Front end team
+
+Description :   Systeme de layout optimise SEO. Le layout est le squelette qui 
+                compose chaque page. Il est diniti en pixel et n'est donc 
+                pas fluid contrairement au systeme de grille.
+
+
+Support     :   >=IE7 Full                
+
+Alias       :   "/assets/"          /var/www/_branches/ccmcms/application/assets/
+                "/fonts/" /var/www/_branches/ccmcms/application/assets/fonts/
+                "/img/"   /var/www/_branches/ccmcms/application/assets/img/
+
+*******************************************************************************/
+/*
+-- DEFAULT CSS 
+------------------------------------------------------------------------------*/
+.layout_ct {
+  padding: 20px;
+}
+
+/* gouttiere entre les bloc de la grille */
+.layout.gutter .layout_top {
+  margin-bottom: 20px;
+}
+
+.layout.gutter .layout_top,
+.layout.gutter .layout_main {
+  border-right: 1.53846em solid transparent;
+}
+
+.layout.col_2.gutter .layout_main {
+  border-right: none;
+  border-left: 1.53846em solid transparent;
+}
+
+.layout.col_3.gutter .layout_main {
+  border-left: 1.53846em solid transparent;
+}
+
+.layout {
+  position: relative;
+  width: 1000px;
+  margin: 0 auto;
+  background-color: transparent;
+}
+
+.layout .layout_main,
+.layout .layout_left,
+.layout .layout_right {
+  float: left;
+}
+
+/*
+-- GESTION DES LAYOUTS
+----------------------------------------------------------------------------- */
+/* colonne gauche et droite */
+.layout .layout_left {
+  width: 18.75%;
+}
+
+.layout .layout_right {
+  width: 31.25%;
+}
+
+/* 2 colonnes droite (default) */
+.layout .layout_main {
+  width: 68.75%;
+}
+
+/* 2 colonnes gauche */
+.layout.col_2 .layout_main {
+  width: 81.25%;
+}
+
+/* 3 colonnes */
+.layout.col_3 .layout_main {
+  width: 50%;
+}
+
+/*
+-- OFF CANVAS LAYOUT
+------------------------------------------------------------------------------*/
+.app--rwd .layout.layout--offcanvas .layout_left {
+  width: 27.27273%;
+}
+.app--rwd .layout.layout--offcanvas .layout_main {
+  width: 100%;
+}
+.app--rwd .layout.layout--offcanvas.col_3 .layout_main {
+  width: 72.72727%;
+}
+.app--rwd .layout.layout--offcanvas .layout_right {
+  width: 300px;
+}
+.app--rwd .layout.layout--offcanvas {
+  width: auto;
+  max-width: 1000px;
+  /* version 1 colonne : on reset les styles */
+}
+.app--rwd .layout.layout--offcanvas .layout_ct .layout_ct__1 {
+  width: 100%;
+  float: left;
+  margin-right: -300px;
+}
+.app--rwd .layout.layout--offcanvas .layout_ct .layout_ct__2 {
+  margin-right: 300px;
+}
+.app--rwd .layout.layout--offcanvas.col_1 .layout_ct__1,
+.app--rwd .layout.layout--offcanvas.col_1 .layout_ct__2 {
+  width: auto;
+  float: none;
+  margin: 0;
+}
+
+/*
+-- RESPONSIVE LAYOUT
+----------------------------------------------------------------------------- */
+.app--rwd {
+  /*-- OFF CANVAS LAYOUT ---------------------------------------------------- */
+}
+.app--rwd .layout {
+  width: auto;
+  max-width: 1000px;
+}
+@media (max-width: 979px) {
+  .app--rwd .layout.gutter .layout_top,
+  .app--rwd .layout.gutter .layout_left {
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 767px) {
+  .app--rwd .layout.col_2 .layout_main,
+  .app--rwd .layout.col_3 .layout_main {
+    border: none;
+  }
+  .app--rwd .layout.col_2 .layout_main,
+  .app--rwd .layout.col_3 .layout_main,
+  .app--rwd .layout .layout_top,
+  .app--rwd .layout .layout_main,
+  .app--rwd .layout .layout_left,
+  .app--rwd .layout .layout_right {
+    float: none;
+    width: 100%;
+    border: none;
+  }
+  .app--rwd .layout.gutter .layout_top,
+  .app--rwd .layout.gutter .layout_left,
+  .app--rwd .layout.gutter .layout_main,
+  .app--rwd .layout.gutter .layout_right {
+    margin-bottom: 10px;
+  }
+}
+@media (max-width: 979px) {
+  .app--rwd .layout.layout--offcanvas .layout_ct .layout_left {
+    display: block;
+    width: auto;
+    float: none;
+    border-right: 1.53846em solid transparent;
+  }
+  .app--rwd .layout.layout--offcanvas.col_3.gutter .layout_ct .layout_main {
+    display: block;
+    width: auto;
+    border-left: none;
+  }
+}
+@media (max-width: 767px) {
+  .app--rwd .layout.layout--offcanvas .layout_ct {
+    padding: 10px;
+  }
+  .app--rwd .layout.layout--offcanvas.gutter,
+  .app--rwd .layout.layout--offcanvas.col_2.gutter .layout_ct .layout_main,
+  .app--rwd .layout.layout--offcanvas.col_3.gutter .layout_ct .layout_main {
+    border: none;
+  }
+  .app--rwd .layout.layout--offcanvas.col_2 .layout_ct .layout_main,
+  .app--rwd .layout.layout--offcanvas.col_3 .layout_ct .layout_main,
+  .app--rwd .layout.layout--offcanvas .layout_ct .layout_main,
+  .app--rwd .layout.layout--offcanvas .layout_ct .layout_left,
+  .app--rwd .layout.layout--offcanvas .layout_ct .layout_right,
+  .app--rwd .layout.layout--offcanvas .layout_ct .layout_ct__1 {
+    float: none;
+    width: auto;
+    border: none;
+  }
+}
+
+/*@import "_core/forms";*/
+/*@import "_core/buttons";*/
+/*@import "_core/oas";*/
+/*@import "_core/responsive";*/
+.ops_bouygues_contenu .ops_bouygues_form .widgetform_touchvibes {
+  background: none;
+  background-color: #fff;
+  border: 0;
+  padding: 0;
+}
+.ops_bouygues_contenu .ops_bouygues_form .widgetform_touchvibes .jMsg {
+  margin-bottom: -15px;
+  font-size: 11px;
+}
+.ops_bouygues_contenu .ops_bouygues_form .widgetform_touchvibes .ccmcss_form input[type="text"],
+.ops_bouygues_contenu .ops_bouygues_form .widgetform_touchvibes .ccmcss_form input[type="email"],
+.ops_bouygues_contenu .ops_bouygues_form .widgetform_touchvibes .ccmcss_form input[type="search"],
+.ops_bouygues_contenu .ops_bouygues_form .widgetform_touchvibes .ccmcss_form input[type="tel"],
+.ops_bouygues_contenu .ops_bouygues_form .widgetform_touchvibes .ccmcss_form input[type="password"],
+.ops_bouygues_contenu .ops_bouygues_form .widgetform_touchvibes .ccmcss_form input[type="button"],
+.ops_bouygues_contenu .ops_bouygues_form .widgetform_touchvibes select {
+  height: 30px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background: none;
+  background-color: #fff;
+  font-size: 13px;
+}
+.ops_bouygues_contenu .ops_bouygues_form .widgetform_touchvibes .ccmcss_form.ccmcss_form--w25 {
+  padding: 10px;
+}
+.ops_bouygues_contenu .ops_bouygues_form .widgetform_touchvibes .ccmcss_form.ccmcss_form--w25 .ccmcss_form__line--no_col {
+  padding-left: 0%;
+}
+.ops_bouygues_contenu .ops_bouygues_form .widgetform_touchvibes .ccmcss_form.ccmcss_form--w25 .ccmcss_form__line--no_col input[type="button"] {
+  width: 200px;
+  height: 50px;
+  margin: 0 auto;
+  color: #fff;
+  font-size: 17px;
+  font-weight: bold;
+  background-color: #c8007b;
+  border: 0;
+  text-transform: none;
+}
+.ops_bouygues_contenu .ops_bouygues_form .widgetform_touchvibes .ccmcss_form.ccmcss_form--w25 .ccmcss_form__line--no_col .app_mandatory_field {
+  margin: 20px 0 10px;
+  font-size: 9px;
+  text-align: center;
+}
+
+body {
+  background-color: #e9e9e9;
+}
+
+section {
+  margin-bottom: 0;
+}
+
+.app--rwd .layout {
+  max-width: initial;
+}
+
+.ops_bouygues_page {
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 30px 0 10px;
+  background-color: #fff;
+}
+.ops_bouygues_page .ops_bouygues_header {
+  padding: 0 10px 30px;
+}
+@media (max-width: 950px) {
+  .ops_bouygues_page .ops_bouygues_header {
+    max-width: 630px;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+.ops_bouygues_page .ops_bouygues_header .grid_col:nth-child(1) img {
+  padding: 0 10px 0 0;
+  width: 145px;
+  max-width: none;
+}
+.ops_bouygues_page .ops_bouygues_header .grid_col:nth-child(2) {
+  vertical-align: middle;
+}
+.ops_bouygues_page .ops_bouygues_header .grid_col:nth-child(2) img {
+  height: 1px;
+  padding: 0;
+}
+.ops_bouygues_page .ops_bouygues_contenu {
+  padding: 0 10px;
+  background: url("img/bg.png") no-repeat center -20px;
+}
+@media (max-width: 950px) {
+  .ops_bouygues_page .ops_bouygues_contenu .grid_left,
+  .ops_bouygues_page .ops_bouygues_contenu .grid_right {
+    width: 100%;
+  }
+}
+.ops_bouygues_page .ops_bouygues_contenu .ops_bouygues_h1 {
+  width: 100%;
+  max-width: 620px;
+  margin-bottom: -20px;
+  text-align: center;
+  font: 19px arial, sans-serif;
+  color: #1156a4;
+}
+.ops_bouygues_page .ops_bouygues_contenu .ops_bouygues_h1 span {
+  font-size: 36px;
+}
+@media (max-width: 950px) {
+  .ops_bouygues_page .ops_bouygues_contenu .ops_bouygues_h1 {
+    margin: 0 auto;
+  }
+}
+.ops_bouygues_page .ops_bouygues_contenu .ops_bouygues_disclaimer {
+  width: 620px;
+  position: relative;
+  text-align: center;
+}
+@media (max-width: 950px) {
+  .ops_bouygues_page .ops_bouygues_contenu .ops_bouygues_disclaimer {
+    margin: 0 auto;
+  }
+}
+@media (max-width: 620px) {
+  .ops_bouygues_page .ops_bouygues_contenu .ops_bouygues_disclaimer {
+    max-width: 620px;
+    width: 100%;
+  }
+}
+@media (max-width: 423px) {
+  .ops_bouygues_page .ops_bouygues_contenu .ops_bouygues_disclaimer {
+    min-height: 805px;
+  }
+}
+.ops_bouygues_page .ops_bouygues_contenu .ops_bouygues_disclaimer .ops_bouygues_disclaimer_img {
+  margin-left: 35px;
+  padding-top: 60px;
+}
+@media (max-width: 620px) {
+  .ops_bouygues_page .ops_bouygues_contenu .ops_bouygues_disclaimer .ops_bouygues_disclaimer_img {
+    margin: 0 auto;
+  }
+}
+.ops_bouygues_page .ops_bouygues_contenu .ops_bouygues_disclaimer .ops_bouygues_disclaimer_textblock1 {
+  width: 230px;
+  height: 210px;
+  position: absolute;
+  top: 75px;
+  right: 50px;
+  font-family: arial, sans-serif;
+}
+@media (max-width: 620px) {
+  .ops_bouygues_page .ops_bouygues_contenu .ops_bouygues_disclaimer .ops_bouygues_disclaimer_textblock1 {
+    display: inline-block;
+    padding-top: 10px;
+    position: initial;
+    vertical-align: top;
+  }
+}
+.ops_bouygues_page .ops_bouygues_contenu .ops_bouygues_disclaimer .ops_bouygues_disclaimer_textblock1 h2 {
+  font-size: 25px;
+  font-weight: bold;
+  color: #353333;
+  text-align: center;
+  line-height: 1;
+}
+.ops_bouygues_page .ops_bouygues_contenu .ops_bouygues_disclaimer .ops_bouygues_disclaimer_textblock1 h2 span {
+  font-size: 41px;
+}
+.ops_bouygues_page .ops_bouygues_contenu .ops_bouygues_disclaimer .ops_bouygues_disclaimer_textblock1 .ops_bouygues_disclaimer_textblock1_content p {
+  display: inline-block;
+  vertical-align: top;
+  height: 150px;
+}
+.ops_bouygues_page .ops_bouygues_contenu .ops_bouygues_disclaimer .ops_bouygues_disclaimer_textblock1 .ops_bouygues_disclaimer_textblock1_content p:nth-child(1) {
+  width: 75px;
+  font: bold 145px 'Arial Black', sans-serif;
+  color: #c8007b;
+  line-height: 115px;
+}
+.ops_bouygues_page .ops_bouygues_contenu .ops_bouygues_disclaimer .ops_bouygues_disclaimer_textblock1 .ops_bouygues_disclaimer_textblock1_content p:nth-child(2) {
+  font-size: 15px;
+  color: #7b7b7b;
+  line-height: 1;
+  text-align: left;
+}
+.ops_bouygues_page .ops_bouygues_contenu .ops_bouygues_disclaimer .ops_bouygues_disclaimer_textblock1 .ops_bouygues_disclaimer_textblock1_content p:nth-child(2) span:nth-child(1) {
+  color: #c8007b;
+  font-size: 55px;
+  font-weight: bold;
+  color: #c8007b;
+}
+.ops_bouygues_page .ops_bouygues_contenu .ops_bouygues_disclaimer .ops_bouygues_disclaimer_textblock1 .ops_bouygues_disclaimer_textblock1_content p:nth-child(2) sup {
+  font-size: 34px;
+  color: #c8007b;
+}
+.ops_bouygues_page .ops_bouygues_contenu .ops_bouygues_disclaimer .ops_bouygues_disclaimer_textblock1 .ops_bouygues_disclaimer_textblock1_content p:nth-child(2) span:nth-child(6) {
+  font-size: 25px;
+}
+.ops_bouygues_page .ops_bouygues_contenu .ops_bouygues_disclaimer .ops_bouygues_disclaimer_textblock2 {
+  width: 170px;
+  height: 120px;
+  position: absolute;
+  bottom: 40px;
+  left: 5px;
+}
+@media (max-width: 620px) {
+  .ops_bouygues_page .ops_bouygues_contenu .ops_bouygues_disclaimer .ops_bouygues_disclaimer_textblock2 {
+    display: inline-block;
+    padding: 10px;
+    position: initial;
+    vertical-align: top;
+  }
+}
+.ops_bouygues_page .ops_bouygues_contenu .ops_bouygues_disclaimer .ops_bouygues_disclaimer_textblock2 .ops_bouygues_disclaimer_textblock2_content img,
+.ops_bouygues_page .ops_bouygues_contenu .ops_bouygues_disclaimer .ops_bouygues_disclaimer_textblock2 .ops_bouygues_disclaimer_textblock2_content p {
+  display: inline-block;
+}
+.ops_bouygues_page .ops_bouygues_contenu .ops_bouygues_disclaimer .ops_bouygues_disclaimer_textblock2 .ops_bouygues_disclaimer_textblock2_content p {
+  font: 14px arial, sans-serif;
+  color: #7b7b7b;
+}
+.ops_bouygues_page .ops_bouygues_contenu .ops_bouygues_form {
+  max-width: 310px;
+  margin-top: -45px;
+}
+@media (max-width: 950px) {
+  .ops_bouygues_page .ops_bouygues_contenu .ops_bouygues_form {
+    margin: 0 auto;
+  }
+}
+.ops_bouygues_page .ops_bouygues_contenu .ops_bouygues_form .widgetform_header {
+  background-color: #c8007b;
+  color: #fff;
+  text-align: center;
+}
+.ops_bouygues_page .ops_bouygues_contenu .ops_bouygues_form .widgetform_header .widgetform_title {
+  padding-top: 10px;
+  font: 24px "Open Sans", sans-serif;
+}
+.ops_bouygues_page .ops_bouygues_contenu .ops_bouygues_form .widgetform_catchphrase {
+  margin: 0;
+  text-align: center;
+  background-color: #c8007b;
+  color: #fff;
+  padding-bottom: 10px;
+}
+.ops_bouygues_page .ops_bouygues_contenu .ops_bouygues_form .ccmcss_form.ccmcss_form--w25 {
+  margin: 0;
+  background-color: #f8f8f8;
+  border-left: solid 1px #aeaeae;
+  border-right: solid 1px #aeaeae;
+}
+.ops_bouygues_page .ops_bouygues_contenu .ops_bouygues_form .ccmcss_form.ccmcss_form--w25:last-child{
+  border-bottom: solid 1px #aeaeae;
+}
+.ops_bouygues_page .ops_bouygues_contenu .ops_bouygues_form .ccmcss_form.ccmcss_form--w25 .ccmcss_form__line > .grid_left,
+.ops_bouygues_page .ops_bouygues_contenu .ops_bouygues_form .ccmcss_form.ccmcss_form--w25 .widgetform_touchvibes .w25 {
+  width: 90px;
+}
+.ops_bouygues_page .ops_bouygues_contenu .ops_bouygues_form .ccmcss_form.ccmcss_form--w25 .ccmcss_form__line {
+  margin-bottom: 15px;
+}
+.ops_bouygues_page .ops_bouygues_contenu .ops_bouygues_form .ccmcss_form.ccmcss_form--w25 .ccmcss_form__line .grid_left label {
+  text-align: left;
+  font-weight: normal;
+  font-size: 13px;
+}
+.ops_bouygues_page .ops_bouygues_contenu .ops_bouygues_form .ccmcss_form.ccmcss_form--w25 .jCustomSelect {
+  font-size: 13px;
+}
+.ops_bouygues_page .ops_bouygues_contenu .ops_bouygues_form .ccmcss_form.ccmcss_form--w25 .jFieldadditionalField12858 .grid_last .grid_col label {
+  font-size: 13px;
+}
+.ops_bouygues_page .ops_bouygues_contenu .ops_bouygues_form .ccmcss_form.ccmcss_form--w25 .widgetform_emailcorrect {
+  font-size: 11px;
+}
+.ops_bouygues_page .ops_bouygues_contenu .ops_bouygues_form .jWidgetForm2 {
+  padding-top: 0;
+  margin: 0;
+  background-color: #f8f8f8;
+  border-left: solid 1px #aeaeae;
+  border-right: solid 1px #aeaeae;
+  border-bottom: solid 1px #aeaeae;
+  padding: 0 0 5px;
+}
+@media (max-width: 768px) {
+  .app--rwd .ops_bouygues_page .ops_bouygues_contenu .ops_bouygues_form .ccmcss_form__line > .grid_left,
+  .app--rwd .ops_bouygues_page .ops_bouygues_contenu .ops_bouygues_form .ccmcss_form__line.ccmcss_form__line--radio > .grid_left {
+    float: left;
+    width: 90px !important;
+  }
+  .app--rwd .ops_bouygues_page .ops_bouygues_contenu .ops_bouygues_form .ccmcss_form__line > .grid_last,
+  .app--rwd .ops_bouygues_page .ops_bouygues_contenu .ops_bouygues_form .ccmcss_form__line.ccmcss_form__line--radio > .grid_last {
+    display: table;
+    width: auto !important;
+  }
+  .app--rwd .ops_bouygues_page .ops_bouygues_contenu .ops_bouygues_form .ccmcss_form__line.ccmcss_form__line--radio .grid_row {
+    width: 100%;
+  }
+  .app--rwd .ops_bouygues_page .ops_bouygues_contenu .ops_bouygues_form .ccmcss_form__line.ccmcss_form__line--radio .grid_row .grid_col {
+    display: table-cell;
+    width: auto;
+  }
+}
+.ops_bouygues_page .ops_bouygues_h3 {
+  padding: 30px 10px 10px;
+  text-align: center;
+  font: 18px arial, sans-serif;
+  color: #5f5f5f;
+  background-color: #fff;
+  clear: both;
+}
+.ops_bouygues_page .ops_bouygues_items {
+  max-width: 915px;
+  padding-bottom: 40px;
+  margin: 10px auto 25px;
+  border: solid 1px #818181;
+}
+.ops_bouygues_page .ops_bouygues_items .ops_bouygues_items_container {
+  background-color: #ececec;
+  padding-bottom: 20px;
+}
+.ops_bouygues_page .ops_bouygues_items .ops_bouygues_item_title {
+  font: 23px arial, sans-serif;
+  color: #1156a4;
+  text-align: center;
+  padding: 30px 10px 10px;
+}
+.ops_bouygues_page .ops_bouygues_items .ops_bouygues_item_title:after {
+  content: "";
+  display: block;
+  width: 291px;
+  height: 15px;
+  margin: 20px auto 0;
+  background: url("img/separator.png") no-repeat center bottom/contain;
+}
+.ops_bouygues_page .ops_bouygues_items ul {
+  text-align: center;
+}
+.ops_bouygues_page .ops_bouygues_items ul li {
+  display: inline-block;
+  vertical-align: top;
+}
+.ops_bouygues_page .ops_bouygues_items ul li img {
+  margin: 0 auto;
+}
+.ops_bouygues_page .ops_bouygues_items ul li p {
+  width: 130px;
+  height: 50px;
+  padding: 0 10px;
+  font: 16px arial, sans-serif;
+  color: #5f5f5f;
+}
+.ops_bouygues_page .ops_bouygues_items .ops_bouygues_items_list {
+  max-width: 680px;
+  width: 100%;
+  margin: 0 auto;
+}
+.ops_bouygues_page .ops_bouygues_items .ops_bouygues_items_list li {
+  width: 314px;
+  padding: 20px 0;
+  margin: 10px;
+  border-radius: 5px;
+  border: solid 1px #1156a4;
+  background-color: #fff;
+  text-align: center;
+}
+.ops_bouygues_page .ops_bouygues_items .ops_bouygues_items_list li img,
+.ops_bouygues_page .ops_bouygues_items .ops_bouygues_items_list li p {
+  display: inline-block;
+}
+.ops_bouygues_page .ops_bouygues_items .ops_bouygues_items_list li p {
+  width: 205px;
+  color: #1156a4;
+  font-size: 12px;
+  text-align: left;
+}
+.ops_bouygues_page .ops_bouygues_items .ops_bouygues_items_list li .ops_bouygues_item_title2 {
+  font-weight: bold;
+}
+.ops_bouygues_page h3 + section > .ops_bouygues_items ul li:nth-child(1) p {
+  width: 205px;
+}
+.ops_bouygues_page h3 + section > .ops_bouygues_items ul li:nth-child(2) p {
+  width: 195px;
+}
+.ops_bouygues_page h3 + section > .ops_bouygues_items ul li:nth-child(4) p {
+  width: 155px;
+}
+.ops_bouygues_page section + section > .ops_bouygues_items {
+  padding-bottom: 0;
+}
+
+.ops_bouygues_footer_container {
+  background-color: #d7d7d7;
+}
+.ops_bouygues_footer_container .ops_bouygues_footer {
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 15px 5px;
+}

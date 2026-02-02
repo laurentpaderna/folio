@@ -1,0 +1,46 @@
+<article id="panel-{{ skillTitle }}" class="is-panel-container is-content has-width-full has-position-absolute">
+    <div class="is-panel has-overflow-scroll has-position-absolute has-height-full has-duration-small has-background-white">
+        <section class="is-grid is-skill-{{ skillTitle }} has-padding-bottom-big">
+            <div class="is-cell has-width-full">
+                <h2 class="is-title-very-big is-skill-title has-text-center has-color-white has-margin-bottom-large">Mon niveau d'apprentissage</h2>
+                <hr class="is-separator has-background-white has-margin-bottom-very-big">
+                <div class="has-text-center" data-counter="{{ skillPercent }}">
+                    <svg class="is-skill-percentage has-valign-middle has-transition-all has-duration-small" width="200" height="200">
+                        <circle class="" cx="95" cy="95" r="85"></circle>
+                    </svg>
+                    <span class="is-counter has-margin-left-auto has-margin-right-auto has-color-white has-overflow-hidden has-transition-all has-position-absolute">
+                        <span></span>
+                    </span>
+                </div>
+            </div>
+            {% if project1 is defined %}
+                <a class="is-cell" href="#panel-{{ project1 }}">
+                    <span class="is-subject-item is-subject-item-bigger is-item-element has-inline-block is-icon-{{ project1 }} has-color-white has-cursor-pointer has-padding-big has-margin-very-big"></span>
+                </a>
+            {% endif %}
+            {% if project2 is defined %}
+                <a class="is-cell" href="#panel-{{ project2 }}">
+                    <span class="is-subject-item is-subject-item-bigger is-item-element has-inline-block is-icon-{{ project2 }} has-color-white has-cursor-pointer has-padding-big has-margin-very-big"></span>
+                </a>
+            {% endif %}
+            {% if project3 is defined %}
+                <a class="is-cell" href="#panel-{{ project3 }}">
+                    <span class="is-subject-item is-subject-item-bigger is-item-element has-inline-block is-icon-{{ project3 }} has-color-white has-cursor-pointer has-padding-big has-margin-very-big"></span>
+                </a>
+            {% endif %}
+        </section>
+        <section class="is-grid has-text-center has-desktop-container has-margin-right-auto has-margin-left-auto">
+            <div class="is-cell is-subject-content has-font-big">
+                <h2 class="is-title-very-big has-color-dark-blue has-text-center has-margin-top-large has-margin-bottom-very-big has-text-uppercase">{{ skillTitle }}</h2>
+                <hr class="is-separator has-background-dark-blue">
+                <p class="is-subject-text has-width-full">{{ paragraph1 }}</p>
+                {% if paragraph2 is defined %}
+                    <p class="is-subject-text has-width-full">{{ paragraph2 }}</p>
+                {% endif %}
+                {% if paragraph3 is defined %}
+                    <p class="is-subject-text has-width-full">{{ paragraph3 }}</p>
+                {% endif %}
+            </div>
+        </section>
+    </div>
+</article>

@@ -1,0 +1,48 @@
+<article id="panel-{{ awardTitle }}" class="is-panel-container is-content has-width-full has-position-absolute">
+    <div class="is-panel has-overflow-scroll has-position-absolute has-height-full has-duration-small has-background-white">
+        <section class="is-grid is-subject-header is-award-{{ awardTitle }} has-padding-bottom-big">
+            {% if awardSkill1 is defined %}
+                <a href="#panel-{{ awardSkill1 }}" class="is-cell has-font-medium">
+                    <span class="is-subject-item is-item-element has-inline-block is-icon-{{ awardSkill1 }} has-color-white has-cursor-pointer has-padding-big has-margin-very-big"></span>
+                </a>
+            {% endif %}
+            {% if awardSkill2 is defined %}
+                <a href="#panel-{{ awardSkill2 }}" class="is-cell has-font-medium">
+                    <span class="is-subject-item is-item-element has-inline-block is-icon-{{ awardSkill2 }} has-color-white has-cursor-pointer has-padding-big has-margin-very-big"></span>
+                </a>
+            {% endif %}
+            {% if awardSkill3 is defined %}
+                <a href="#panel-{{ awardSkill3 }}" class="is-cell has-font-medium">
+                    <span class="is-subject-item is-item-element has-inline-block is-icon-{{ awardSkill3 }} has-color-white has-cursor-pointer has-padding-big has-margin-very-big"></span>
+                </a>
+            {% endif %}
+        </section>
+        <section class="is-grid has-text-center has-margin-left-auto has-margin-right-auto has-desktop-container">
+            <div class="is-cell is-subject-content has-font-medium">
+                <h2 class="is-title-very-big has-color-dark-blue has-text-center has-margin-top-large has-margin-bottom-very-big">{{ title }}</h2>
+                <div class="is-grid is-award-list has-cell-top has-width-full has-text-center">
+                    <div class="is-cell has-width-third has-font-medium">
+                        <span class="is-skill-item is-icon-time"></span>
+                        <p class="is-award-text">{{ timeItem }}</p>
+                    </div>
+                    <div class="is-cell has-width-third has-font-medium">
+                        <span class="is-skill-item is-icon-person"></span>
+                        <p class="is-award-text">{{ jobItem }}</p>
+                    </div>
+                    <div class="is-cell has-width-third has-font-medium">
+                        <span class="is-skill-item is-icon-location"></span>
+                        <p class="is-award-text">{{ locationItem }}</p>
+                    </div>
+                </div>
+                <hr class="is-separator has-margin-top-large has-margin-bottom-very-big has-background-dark-blue">
+                {% if linkUrl is defined %}
+                    <a href="{{ linkUrl }}" target="_blank" class="is-button is-item-element has-inline-block has-background-dark-blue has-color-white has-margin-bottom-very-big has-cursor-pointer has-font-medium has-small-transition">VOIR LE SITE</a>
+                {% endif %}
+                <p class="is-subject-text has-width-full">{{ paragraph1 | raw }}</p>
+                {% if paragraph2 is defined %}
+                    <p class="is-subject-text has-width-full">{{ paragraph2 | raw }}</p>
+                {% endif %}
+            </div>
+        </section>
+    </div>
+</article>

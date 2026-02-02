@@ -1,0 +1,8 @@
+{
+    "require": {
+        "twig/twig": "^3.20",
+        "ext-dom": "*",
+        "ext-pdo": "*",
+        "twig/intl-extra": "^3.22"
+    }
+}

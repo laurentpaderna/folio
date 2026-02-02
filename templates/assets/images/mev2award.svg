@@ -1,0 +1,29 @@
+<svg class="is-character is-centered is-block has-linear" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 390 300" enable-background="new 0 0 390 300" xml:space="preserve">
+                <g id="background">
+	                <circle fill="#6893d4" cx="205" cy="149" r="146"/>
+					<g id="is-shadow-award" class="has-all-transition has-no-opacity">
+		                <path fill="#4c6d9d" d="M273.3,68.1L351,137c0,0,7,58-36,107c-26,29.6-62,47-101,51l-77-72L272.3,68.1"/>
+	                </g>
+                </g>
+	<g id="is-face-award" class="has-show has-animation">
+	                <polygon fill="#A67C52" points="117.9,87.4 137.2,87.4 137.2,68.1 272.3,68.1 272.3,87.4 291.6,87.4 291.6,203.2 272.3,203.2 272.3,222.5 253,222.5 253,203.2 233.7,203.2 233.7,222.5 214.4,222.5 214.4,203.2 195.1,203.2 195.1,222.5 175.8,222.5 175.8,203.2 156.5,203.2 156.5,222.5 137.2,222.5 137.2,203.2 117.9,203.2"/>
+		<rect x="157" y="107" fill="#FFFFFF" width="38" height="38"/>
+		<rect x="214" y="107" fill="#FFFFFF" width="39" height="38"/>
+		<rect id="eye2" x="170" y="120" width="12" height="12"/>
+		<rect id="eye1" x="228" y="120" width="12" height="12"/>
+		<rect x="195" y="123" fill="#313535" width="19" height="5"/>
+                </g>
+	<g id="is-award-document" class="has-show has-animation">
+	                <rect x="253" y="158" fill="#CFD1D2" width="116" height="144"/>
+		<rect x="273" y="231" fill="#8E8E8E" width="57" height="19"/>
+		<rect x="271" y="196" fill="#8E8E8E" width="78" height="19"/>
+		<rect x="273" y="268" fill="#8E8E8E" width="37" height="19"/>
+		<rect x="273" y="158" fill="#DBA11F" width="57" height="19"/>
+		<rect x="273" y="119" fill="#D1AB69" width="57" height="19"/>
+		<rect x="273" y="137" fill="#D8A641" width="19" height="21"/>
+		<rect x="311" y="137" fill="#D8A641" width="19" height="21"/>
+		<rect x="292" y="137" fill="#EFDDB9" width="19.5" height="21"/>
+		<rect x="293" y="177" fill="#962929" width="19" height="19"/>
+		<rect x="293" y="195" fill="#D83939" width="19" height="19"/>
+                </g>
+            </svg>

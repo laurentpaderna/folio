@@ -1,0 +1,35 @@
+<article id="panel-{{ pageTitle }}" class="is-panel-container is-content has-width-full has-position-absolute">
+    <div class="is-panel has-overflow-scroll has-position-absolute has-height-full has-duration-small has-background-white">
+        <section class="is-grid is-subject-header is-{{ pageTitle}} has-text-left has-padding-bottom-big">
+            {% if skill1 is defined %}
+                <a href="#panel-{{ skill1 }}" class="is-cell has-font-medium">
+                    <span class="is-subject-item is-item-element has-inline-block is-icon-{{ skill1 }} has-color-white has-cursor-pointer has-padding-big has-margin-very-big"></span>
+                </a>
+            {% endif %}
+            {% if skill2 is defined %}
+                <a href="#panel-{{ skill2 }}" class="is-cell has-font-medium">
+                    <span class="is-subject-item is-item-element has-inline-block is-icon-{{ skill2 }} has-color-white has-cursor-pointer has-padding-big has-margin-very-big"></span>
+                </a>
+            {% endif %}
+            {% if skill3 is defined %}
+                <a href="#panel-{{ skill3 }}" class="is-cell has-font-medium">
+                    <span class="is-subject-item is-item-element has-inline-block is-icon-{{ skill3 }} has-color-white has-cursor-pointer has-padding-big has-margin-very-big"></span>
+                </a>
+            {% endif %}
+        </section>
+        <section class="is-grid has-text-center has-desktop-container has-margin-right-auto has-margin-left-auto">
+            <div class="is-cell is-subject-content">
+                <h2 class="is-title-very-big has-text-center has-color-dark-blue">{{ title }}</h2>
+                <hr class="has-background-dark-blue has-margin-bottom-large has-margin-top-large is-separator">
+                <a href="{{ linkUrl }}" target="_blank" class="is-button is-item-element has-inline-block has-background-dark-blue has-color-white has-cursor-pointer has-font-medium has-duration-tiny has-transition-transform has-margin-bottom-very-big">{{ linkTitle }}</a>
+                <p class="is-subject-text has-width-full">{{ paragraph1|raw }}</p>
+                {%  if paragraph2 is defined %}
+                    <p class="is-subject-text has-width-full">{{ paragraph2|raw }}</p>
+                {% endif %}
+                {%  if paragraph3 is defined %}
+                    <p class="is-subject-text has-width-full">{{ paragraph3|raw }}</p>
+                {% endif %}
+            </div>
+        </section>
+    </div>
+</article>

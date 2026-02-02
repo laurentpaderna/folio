@@ -1,0 +1,16 @@
+services:
+  folio_app:
+    build:
+      context: ./php
+      dockerfile: Dockerfile
+    container_name: folio_app
+    restart: always
+    volumes:
+      - ../:/var/www/html
+    ports:
+      - "80:80"
+    extra_hosts:
+      - "folio.local.com:127.0.0.1"
+
+volumes:
+  folio_data:
